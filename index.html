@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Company Profile Teknik Komputer dan Jaringan - Mengenal teknologi komputer, jaringan, server, dan dunia digital.">
+<title>TKJ TECH | Computer & Network Technology</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #07111f;
+  --bg2: #0b192b;
+  --card: #102239;
+  --text: #f2f7ff;
+  --muted: #9db0c8;
+  --blue: #00c8ff;
+  --purple: #8b5cf6;
+  --border: rgba(0,200,255,.17);
+}
+
+* {margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+
+body {
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:.3s;
+}
+
+body.light {
+  --bg:#eef5fc;
+  --bg2:#ffffff;
+  --card:#ffffff;
+  --text:#12243a;
+  --muted:#62748b;
+  --border:rgba(0,100,180,.2);
+}
+
+a {text-decoration:none;color:inherit}
+button {font-family:inherit;cursor:pointer}
+section {padding:100px 8%;scroll-margin-top:75px}
+.container {max-width:1200px;margin:auto}
+
+.navbar {
+  position:fixed;
+  top:0;left:0;width:100%;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 8%;
+  background:rgba(7,17,31,.88);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+body.light .navbar {background:rgba(255,255,255,.9)}
+
+.logo {
+  font-family:'Orbitron',sans-serif;
+  font-size:20px;
+  font-weight:800;
+  color:var(--blue);
+  letter-spacing:2px;
+}
+
+.logo span {color:var(--text)}
+
+.nav-links {display:flex;gap:27px;align-items:center}
+.nav-links a {
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+  transition:.3s;
+}
+.nav-links a:hover {color:var(--blue)}
+
+.nav-actions {display:flex;gap:12px;align-items:center}
+
+.theme-btn,.menu-btn {
+  background:var(--card);
+  color:var(--blue);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:9px 12px;
+  font-size:17px;
+}
+
+.menu-btn {display:none}
+
+.hero {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding-top:130px;
+  background:
+    radial-gradient(circle at 80% 45%,rgba(0,153,255,.16),transparent 35%),
+    radial-gradient(circle at 15% 70%,rgba(139,92,246,.12),transparent 30%);
+}
+
+#networkCanvas {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:750px;
+}
+
+.tag {
+  display:inline-block;
+  padding:9px 17px;
+  border:1px solid var(--border);
+  background:rgba(0,200,255,.07);
+  color:var(--blue);
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:25px;
+  letter-spacing:1px;
+}
+
+.hero h1 {
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(35px,6vw,68px);
+  line-height:1.2;
+  margin-bottom:20px;
+}
+
+.gradient {
+  background:linear-gradient(90deg,#00c8ff,#8b5cf6);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  color:var(--muted);
+  line-height:1.9;
+  max-width:650px;
+  font-size:14px;
+}
+
+.hero-buttons {display:flex;gap:15px;margin-top:30px;flex-wrap:wrap}
+
+.btn {
+  padding:13px 23px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:600;
+  transition:.3s;
+  display:inline-block;
+}
+
+.btn-primary {
+  color:#04111e;
+  background:linear-gradient(90deg,#00c8ff,#5c8cff);
+  box-shadow:0 0 25px rgba(0,200,255,.2);
+}
+
+.btn-outline {
+  border:1px solid var(--blue);
+  color:var(--blue);
+}
+
+.btn:hover {transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,200,255,.2)}
+
+.hero-bottom {
+  display:flex;
+  gap:35px;
+  margin-top:65px;
+  flex-wrap:wrap;
+}
+
+.hero-stat strong {
+  display:block;
+  font-family:'Orbitron';
+  font-size:23px;
+  color:var(--blue);
+}
+
+.hero-stat span {font-size:11px;color:var(--muted)}
+
+.floating-chip {
+  position:absolute;
+  right:12%;
+  top:36%;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(0,200,255,.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:float 5s ease-in-out infinite;
+  box-shadow:0 0 70px rgba(0,200,255,.1);
+  z-index:1;
+}
+
+.floating-chip .chip-inner {
+  width:130px;height:130px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#073b5c,#151e47);
+  border:1px solid var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  box-shadow:0 0 35px rgba(0,200,255,.3);
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0) rotate(-5deg)}
+  50% {transform:translateY(-20px) rotate(5deg)}
+}
+
+.section-title {text-align:center;margin-bottom:55px}
+.section-title small {color:var(--blue);letter-spacing:3px;font-size:11px;font-weight:600}
+.section-title h2 {font-family:'Orbitron';font-size:clamp(23px,4vw,34px);margin:14px 0}
+.section-title p {color:var(--muted);font-size:13px;max-width:650px;margin:auto;line-height:1.8}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.about-visual {
+  min-height:340px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(135deg,#102b47,#111b39);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.about-visual:before {
+  content:'';
+  position:absolute;
+  width:220px;height:220px;
+  border:1px dashed var(--blue);
+  border-radius:50%;
+  animation:spin 20s linear infinite;
+}
+
+.about-visual .big-icon {font-size:100px;z-index:1;filter:drop-shadow(0 0 20px #00c8ff)}
+@keyframes spin {to{transform:rotate(360deg)}}
+
+.about-text h3 {font-size:25px;margin-bottom:18px}
+.about-text p {font-size:13px;line-height:2;color:var(--muted);margin-bottom:15px}
+
+.check-list {list-style:none;margin-top:20px}
+.check-list li {font-size:13px;margin:13px 0;color:var(--muted)}
+.check-list li span {color:var(--blue);margin-right:10px}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:27px;
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:before {
+  content:'';
+  position:absolute;
+  width:100px;height:100px;
+  background:var(--blue);
+  filter:blur(90px);
+  opacity:0;
+  right:0;top:0;
+  transition:.3s;
+}
+
+.card:hover {
+  transform:translateY(-9px);
+  border-color:var(--blue);
+  box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+
+.card:hover:before {opacity:.3}
+
+.card-icon {
+  width:55px;height:55px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:13px;
+  background:rgba(0,200,255,.1);
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+.card h3 {font-size:16px;margin-bottom:12px}
+.card p {font-size:12px;line-height:1.9;color:var(--muted)}
+
+.tech-section {background:var(--bg2)}
+
+.tech-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.tech-item {
+  text-align:center;
+  padding:25px 15px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:.3s;
+}
+
+.tech-item:hover {transform:scale(1.04);border-color:var(--blue)}
+.tech-item .emoji {font-size:38px;margin-bottom:15px}
+.tech-item h3 {font-size:14px;margin-bottom:9px}
+.tech-item p {font-size:11px;color:var(--muted);line-height:1.7}
+
+.stats {
+  background:linear-gradient(100deg,#082e4c,#151b42);
+  padding:65px 8%;
+}
+
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  text-align:center;
+}
+
+.stat-number {font-family:'Orbitron';font-size:35px;color:#00c8ff}
+.stats p {font-size:12px;color:#c3d8ef;margin-top:8px}
+
+.process {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  counter-reset:step;
+}
+
+.process-item {
+  padding:25px;
+  border-left:2px solid var(--blue);
+  background:var(--card);
+  border-radius:0 12px 12px 0;
+}
+
+.process-item strong {
+  font-family:'Orbitron';
+  color:var(--blue);
+  font-size:25px;
+}
+
+.process-item h3 {font-size:14px;margin:12px 0}
+.process-item p {font-size:11px;line-height:1.8;color:var(--muted)}
+
+.project-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.project {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.project:hover {transform:translateY(-7px)}
+.project-img {
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:65px;
+  background:linear-gradient(135deg,#0c4160,#30245c);
+}
+
+.project-info {padding:22px}
+.project-info h3 {font-size:15px;margin-bottom:10px}
+.project-info p {font-size:12px;color:var(--muted);line-height:1.8}
+.project-info span {display:inline-block;margin-top:15px;color:var(--blue);font-size:10px}
+
+.faq-list {max-width:800px;margin:auto}
+.faq-item {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-bottom:13px;
+  overflow:hidden;
+}
+
+.faq-question {
+  width:100%;
+  padding:19px;
+  background:none;
+  color:var(--text);
+  border:0;
+  display:flex;
+  justify-content:space-between;
+  text-align:left;
+  font-size:13px;
+  font-weight:600;
+}
+
+.faq-answer {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+}
+
+.faq-answer p {padding:0 19px 18px;color:var(--muted);font-size:12px;line-height:1.9}
+.faq-item.active .faq-answer {max-height:150px}
+.faq-item.active .faq-question span {color:var(--blue)}
+
+.contact-section {background:var(--bg2)}
+.contact-grid {display:grid;grid-template-columns:1fr 1.2fr;gap:45px}
+
+.contact-info h3 {font-size:24px;margin-bottom:15px}
+.contact-info p {font-size:13px;color:var(--muted);line-height:1.9}
+.contact-detail {margin-top:25px}
+.contact-detail div {margin:18px 0;font-size:13px;color:var(--muted)}
+.contact-detail span {color:var(--blue);margin-right:12px}
+
+.contact-form {
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:28px;
+  border-radius:15px;
+}
+
+.contact-form input,.contact-form textarea {
+  width:100%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px;
+  margin-bottom:15px;
+  color:var(--text);
+  outline:none;
+  font-family:inherit;
+  font-size:12px;
+}
+
+.contact-form input:focus,.contact-form textarea:focus {border-color:var(--blue)}
+.contact-form textarea {height:130px;resize:vertical}
+.contact-form button {width:100%;border:0}
+.form-note {font-size:11px;color:var(--muted);margin-top:12px;line-height:1.7}
+
+footer {
+  padding:35px 8%;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+
+footer .logo {margin-bottom:15px}
+footer p {font-size:11px;color:var(--muted);line-height:1.8}
+
+.socials {margin-top:15px;color:var(--blue);font-size:12px}
+
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:all .8s ease;
+}
+
+.reveal.show {opacity:1;transform:translateY(0)}
+
+.back-top {
+  position:fixed;
+  bottom:25px;right:25px;
+  width:43px;height:43px;
+  border:1px solid var(--blue);
+  border-radius:10px;
+  background:var(--card);
+  color:var(--blue);
+  font-size:20px;
+  display:none;
+  z-index:900;
+}
+
+.back-top.show {display:block}
+
+@media(max-width:950px) {
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:70px;left:0;width:100%;
+    background:var(--bg2);
+    padding:25px 8%;
+    flex-direction:column;
+    align-items:flex-start;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links.active {display:flex}
+  .menu-btn {display:block}
+  .floating-chip {right:5%;opacity:.3}
+  .cards,.project-grid {grid-template-columns:repeat(2,1fr)}
+  .tech-grid {grid-template-columns:repeat(2,1fr)}
+  .process {grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:650px) {
+  section {padding:75px 6%}
+  .navbar {padding:15px 6%}
+  .hero {padding-left:6%;padding-right:6%}
+  .floating-chip {display:none}
+  .hero h1 {font-size:37px}
+  .about-grid,.contact-grid {grid-template-columns:1fr}
+  .cards,.project-grid {grid-template-columns:1fr}
+  .stats-grid {grid-template-columns:repeat(2,1fr);gap:35px}
+  .process {grid-template-columns:1fr}
+  .hero-bottom {gap:22px}
+  .about-visual {min-height:250px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#home" class="logo">TKJ<span>TECH.</span></a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">Tentang</a>
+    <a href="#technology">Teknologi</a>
+    <a href="#services">Layanan</a>
+    <a href="#projects">Proyek</a>
+    <a href="#contact">Kontak</a>
+  </div>
+
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" aria-label="Ganti tema">☀</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="networkCanvas"></canvas>
+
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="tag">● COMPUTER & NETWORK TECHNOLOGY</div>
+
+      <h1>
+        CONNECTING<br>
+        THE <span class="gradient">DIGITAL</span><br>
+        WORLD.
+      </h1>
+
+      <p>
+        Selamat datang di TKJ TECH, pusat informasi teknologi
+        Teknik Komputer dan Jaringan. Mengenal dunia komputer,
+        jaringan internet, server, serta perkembangan teknologi
+        digital yang terus berkembang.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Jelajahi Website →</a>
+        <a href="#technology" class="btn btn-outline">Pelajari Teknologi</a>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-stat">
+          <strong>01</strong>
+          <span>Computer System</span>
+        </div>
+        <div class="hero-stat">
+          <strong>02</strong>
+          <span>Network Engineering</span>
+        </div>
+        <div class="hero-stat">
+          <strong>03</strong>
+          <span>Digital Technology</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-chip">
+    <div class="chip-inner">⌘</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>WHO WE ARE</small>
+      <h2>Tentang <span class="gradient">TKJ</span></h2>
+      <p>Mengenal lebih dekat Teknik Komputer dan Jaringan serta perannya dalam perkembangan teknologi.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="big-icon">💻</div>
+      </div>
+
+      <div class="about-text reveal">
+        <h3>Apa Itu Teknik Komputer dan Jaringan?</h3>
+        <p>
+          Teknik Komputer dan Jaringan (TKJ) merupakan bidang
+          keahlian yang mempelajari komputer, perangkat keras,
+          perangkat lunak, jaringan komputer, hingga teknologi
+          komunikasi data.
+        </p>
+        <p>
+          TKJ berfokus pada kemampuan merakit, menginstal,
+          mengonfigurasi, mengelola, dan memperbaiki sistem
+          komputer serta jaringan agar dapat bekerja dengan baik.
+        </p>
+
+        <ul class="check-list">
+          <li><span>✦</span> Mempelajari hardware dan software komputer.</li>
+          <li><span>✦</span> Memahami instalasi dan konfigurasi jaringan.</li>
+          <li><span>✦</span> Mengenal server dan sistem operasi jaringan.</li>
+          <li><span>✦</span> Mempelajari keamanan jaringan komputer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech-section" id="technology">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>EXPLORE TECHNOLOGY</small>
+      <h2>Teknologi <span class="gradient">TKJ</span></h2>
+      <p>Berbagai teknologi yang dipelajari dalam bidang Teknik Komputer dan Jaringan.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-item reveal">
+        <div class="emoji">🖥️</div>
+        <h3>Hardware</h3>
+        <p>Mengenal komponen fisik komputer seperti motherboard, RAM, processor, dan hard disk.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">💿</div>
+        <h3>Software</h3>
+        <p>Mempelajari sistem operasi, aplikasi, driver, dan perangkat lunak komputer.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">🌐</div>
+        <h3>Computer Network</h3>
+        <p>Memahami LAN, WAN, MAN, topologi jaringan, IP Address, dan protokol komunikasi.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">🛜</div>
+        <h3>Wireless Network</h3>
+        <p>Mempelajari jaringan nirkabel, Wi-Fi, access point, dan konfigurasi koneksi.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">🗄️</div>
+        <h3>Server</h3>
+        <p>Mengenal server, client-server, hosting, DNS, DHCP, dan layanan jaringan.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">🔐</div>
+        <h3>Cyber Security</h3>
+        <p>Memahami keamanan informasi, firewall, enkripsi, dan perlindungan jaringan.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">📡</div>
+        <h3>Router & Switch</h3>
+        <p>Mengenal perangkat penghubung jaringan serta fungsi routing dan switching.</p>
+      </div>
+
+      <div class="tech-item reveal">
+        <div class="emoji">☁️</div>
+        <h3>Cloud Computing</h3>
+        <p>Mengenal teknologi komputasi awan, penyimpanan online, dan layanan cloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container stats-grid">
+    <div>
+      <div class="stat-number" data-target="8">0</div>
+      <p>Bidang Teknologi</p>
+    </div>
+    <div>
+      <div class="stat-number" data-target="4">0</div>
+      <p>Bidang Layanan</p>
+    </div>
+    <div>
+      <div class="stat-number" data-target="6">0</div>
+      <p>Topik Pembelajaran</p>
+    </div>
+    <div>
+      <div class="stat-number" data-target="100">0</div>
+      <p>Persen Semangat Belajar</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>WHAT WE DO</small>
+      <h2>Bidang <span class="gradient">Keahlian</span></h2>
+      <p>Beberapa kemampuan dan layanan yang berkaitan dengan kompetensi TKJ.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-icon">🔧</div>
+        <h3>Instalasi Komputer</h3>
+        <p>Merakit komputer, memasang komponen hardware, menginstal sistem operasi, dan melakukan konfigurasi perangkat.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>Instalasi Jaringan</h3>
+        <p>Membangun jaringan komputer menggunakan kabel LAN, switch, router, dan perangkat jaringan lainnya.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">⚙️</div>
+        <h3>Konfigurasi Server</h3>
+        <p>Mempelajari pengelolaan server, layanan DHCP, DNS, web server, dan sistem operasi berbasis jaringan.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🛡️</div>
+        <h3>Keamanan Jaringan</h3>
+        <p>Memahami perlindungan jaringan melalui firewall, pengaturan hak akses, dan keamanan data.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🧰</div>
+        <h3>Troubleshooting</h3>
+        <p>Mengidentifikasi masalah pada perangkat komputer dan koneksi jaringan serta mencari solusinya.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">📶</div>
+        <h3>Konfigurasi Wireless</h3>
+        <p>Mengatur access point, SSID, keamanan Wi-Fi, dan konektivitas jaringan nirkabel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="tech-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>LEARNING PROCESS</small>
+      <h2>Alur Pembelajaran <span class="gradient">TKJ</span></h2>
+      <p>Proses mengenal dan mengembangkan kemampuan di bidang teknologi komputer dan jaringan.</p>
+    </div>
+
+    <div class="process">
+      <div class="process-item reveal">
+        <strong>01</strong>
+        <h3>Dasar Komputer</h3>
+        <p>Mempelajari komponen komputer, hardware, software, dan sistem operasi.</p>
+      </div>
+
+      <div class="process-item reveal">
+        <strong>02</strong>
+        <h3>Dasar Jaringan</h3>
+        <p>Mengenal IP Address, topologi, kabel jaringan, dan perangkat koneksi.</p>
+      </div>
+
+      <div class="process-item reveal">
+        <strong>03</strong>
+        <h3>Konfigurasi</h3>
+        <p>Melakukan praktik konfigurasi router, switch, server, dan jaringan.</p>
+      </div>
+
+      <div class="process-item reveal">
+        <strong>04</strong>
+        <h3>Pengembangan</h3>
+        <p>Mengembangkan proyek teknologi dan menerapkan keterampilan yang dipelajari.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>OUR TECHNOLOGY PROJECT</small>
+      <h2>Contoh <span class="gradient">Proyek TKJ</span></h2>
+      <p>Contoh kegiatan praktik yang dapat dilakukan dalam pembelajaran Teknik Komputer dan Jaringan.</p>
+    </div>
+
+    <div class="project-grid">
+      <div class="project reveal">
+        <div class="project-img">🖥️</div>
+        <div class="project-info">
+          <h3>Computer Assembly</h3>
+          <p>Praktik merakit komputer dengan menggabungkan berbagai komponen hardware menjadi satu sistem komputer.</p>
+          <span>HARDWARE • COMPUTER</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-img">🔌</div>
+        <div class="project-info">
+          <h3>LAN Network Installation</h3>
+          <p>Membuat jaringan lokal menggunakan kabel UTP, konektor RJ45, switch, dan komputer.</p>
+          <span>NETWORK • LAN</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-img">📡</div>
+        <div class="project-info">
+          <h3>Wireless Configuration</h3>
+          <p>Membuat jaringan Wi-Fi dan mengatur perangkat access point untuk menghubungkan beberapa perangkat.</p>
+          <span>WIRELESS • WIFI</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-img">🗄️</div>
+        <div class="project-info">
+          <h3>Server Configuration</h3>
+          <p>Mempelajari instalasi dan konfigurasi layanan server untuk kebutuhan jaringan komputer.</p>
+          <span>SERVER • SYSTEM</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-img">🌍</div>
+        <div class="project-info">
+          <h3>Website Development</h3>
+          <p>Membuat website sederhana menggunakan HTML, CSS, dan JavaScript sebagai media informasi digital.</p>
+          <span>WEB • PROGRAMMING</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-img">🔐</div>
+        <div class="project-info">
+          <h3>Network Security</h3>
+          <p>Mempelajari konsep perlindungan jaringan dan penerapan pengamanan akses sistem komputer.</p>
+          <span>SECURITY • NETWORK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="tech-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>FREQUENTLY ASKED QUESTIONS</small>
+      <h2>Pertanyaan <span class="gradient">Umum</span></h2>
+      <p>Informasi singkat mengenai jurusan Teknik Komputer dan Jaringan.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Apa itu jurusan TKJ? <span>＋</span></button>
+        <div class="faq-answer">
+          <p>TKJ adalah jurusan yang mempelajari komputer, perangkat keras, perangkat lunak, jaringan komputer, server, dan teknologi informasi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Apa saja yang dipelajari di TKJ? <span>＋</span></button>
+        <div class="faq-answer">
+          <p>Materi TKJ meliputi perakitan komputer, sistem operasi, jaringan LAN, konfigurasi router, server, keamanan jaringan, dan teknologi digital.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Apakah TKJ belajar coding? <span>＋</span></button>
+        <div class="faq-answer">
+          <p>Ya, beberapa pembelajaran TKJ juga mengenalkan pemrograman, seperti HTML, CSS, JavaScript, dan dasar scripting.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Apa peluang kerja lulusan TKJ? <span>＋</span></button>
+        <div class="faq-answer">
+          <p>Lulusan TKJ dapat mengembangkan karier sebagai teknisi komputer, teknisi jaringan, administrator jaringan, teknisi IT, dan bidang teknologi lainnya sesuai kompetensi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Mengapa jaringan komputer penting? <span>＋</span></button>
+        <div class="faq-answer">
+          <p>Jaringan komputer memungkinkan perangkat saling terhubung, bertukar informasi, berbagi sumber daya, dan berkomunikasi melalui internet maupun jaringan lokal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <small>GET IN TOUCH</small>
+      <h2>Hubungi <span class="gradient">Kami</span></h2>
+      <p>Punya pertanyaan atau ingin mengetahui lebih banyak tentang teknologi TKJ? Kirimkan pesan melalui formulir berikut.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Mari Terhubung!</h3>
+        <p>
+          Teknologi terus berkembang. Mari belajar, berinovasi,
+          dan mengenal lebih jauh dunia komputer dan jaringan.
+        </p>
+
+        <div class="contact-detail">
+          <div><span>⌘</span> Computer & Network Technology</div>
+          <div><span>🌐</span> Digital Technology</div>
+          <div><span>📍</span> Indonesia</div>
+          <div><span>✉</span> Informasi dan Pertanyaan TKJ</div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <input type="text" id="name" placeholder="Nama lengkap" required>
+        <input type="email" id="email" placeholder="Alamat email" required>
+        <input type="text" id="subject" placeholder="Subjek pesan" required>
+        <textarea id="message" placeholder="Tulis pesan kamu..." required></textarea>
+        <button type="submit" class="btn btn-primary">Kirim Pesan →</button>
+        <p class="form-note" id="formNote">
+          Formulir ini merupakan demonstrasi frontend. Pesan belum dikirim ke server atau email.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">TKJ<span>TECH.</span></div>
+  <p>Computer & Network Technology</p>
+  <p>Belajar Teknologi, Membangun Koneksi, Menciptakan Masa Depan.</p>
+  <div class="socials">TECHNOLOGY • INNOVATION • NETWORK</div>
+  <p style="margin-top:22px">© <span id="year"></span> TKJ TECH. All Rights Reserved.</p>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Kembali ke atas">↑</button>
+
+<script>
+// MOBILE MENU
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuBtn.textContent = '☰';
+  });
+});
+
+// DARK / LIGHT MODE
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  themeBtn.textContent = document.body.classList.contains('light') ? '☾' : '☀';
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, {threshold:0.12});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.stat-number');
+let counted = false;
+
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !counted) {
+      counted = true;
+
+      counters.forEach(counter => {
+        const target = Number(counter.dataset.target);
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 60));
+
+        const update = () => {
+          current = Math.min(current + increment, target);
+          counter.textContent = current;
+
+          if(current < target) {
+            requestAnimationFrame(update);
+          } else if(target === 100) {
+            counter.textContent = '100%';
+          } else {
+            counter.textContent = target + '+';
+          }
+        };
+
+        update();
+      });
+    }
+  });
+}, {threshold:0.4});
+
+const stats = document.querySelector('.stats');
+counterObserver.observe(stats);
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
+    const active = item.classList.contains('active');
+
+    document.querySelectorAll('.faq-item').forEach(faq => {
+      faq.classList.remove('active');
+      faq.querySelector('.faq-question span').textContent = '＋';
+    });
+
+    if(!active) {
+      item.classList.add('active');
+      button.querySelector('span').textContent = '−';
+    }
+  });
+});
+
+// BACK TO TOP
+const backTop = document.getElementById('backTop');
+
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('show', window.scrollY > 400);
+});
+
+backTop.addEventListener('click', () => {
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// CONTACT FORM DEMO
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const note = document.getElementById('formNote');
+
+  if(!name) return;
+
+  note.textContent = 'Terima kasih, ' + name + '! Formulir berhasil divalidasi sebagai demonstrasi. Pesan belum terkirim.';
+  note.style.color = '#00c8ff';
+
+  this.reset();
+});
+
+// CURRENT YEAR
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ANIMATED NETWORK BACKGROUND
+const canvas = document.getElementById('networkCanvas');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  particles = [];
+
+  const count = Math.min(90, Math.floor(rect.width / 12));
+
+  for(let i=0;i<count;i++) {
+    particles.push({
+      x:Math.random()*rect.width,
+      y:Math.random()*rect.height,
+      vx:(Math.random()-.5)*.5,
+      vy:(Math.random()-.5)*.5,
+      r:Math.random()*2+1
+    });
+  }
+}
+
+function animateNetwork() {
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+
+  ctx.clearRect(0,0,w,h);
+
+  particles.forEach((p,i) => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x < 0 || p.x > w) p.vx *= -1;
+    if(p.y < 0 || p.y > h) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = '#00c8ff';
+    ctx.fill();
+
+    for(let j=i+1;j<particles.length;j++) {
+      const q = particles[j];
+      const dx = p.x-q.x;
+      const dy = p.y-q.y;
+      const distance = Math.sqrt(dx*dx+dy*dy);
+
+      if(distance < 120) {
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(q.x,q.y);
+        ctx.strokeStyle = `rgba(0,200,255,${1-distance/120})`;
+        ctx.lineWidth=.6;
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(animateNetwork);
+}
+
+resizeCanvas();
+animateNetwork();
+
+window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>
